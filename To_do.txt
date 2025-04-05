@@ -1,9 +1,19 @@
 PDF do zadania w Latex na Overleaf: https://www.overleaf.com/project/660dae9216d861589d61c3ae
 
+0. Oznaczenia w pliku:
+  + Zadanie dodatkowe, nie jest to priorytet
+  - Przydałoby się zrobić jak najszybciej
+?   Teraz nad tym pracuję, nie robić tego
+/   Zrobione! Bonus punkty za przeniesienie na koniec
+
+/ + Przykład zrobionego zadania za dodatkowe punkty
+
+
 1. Menu:
     input danych (manual, heredoc, przekierowanie z pliku)
     komendy (komendy z Operacje)
         dodawać komendy do Help
+  + Zrobienie tego wszystkiego user-friendly
 
 2. Konstrukcja z ciągu liczb:
     drzewo AVL metodą połowienia binarnego
@@ -12,13 +22,13 @@ PDF do zadania w Latex na Overleaf: https://www.overleaf.com/project/660dae9216d
 3. Operacje:
     Wyszukanie najmniejszej i największej wartości
     Wypisanie drzewa w kolejności in-order, pre-order, post-order
-  + Export drzewa do tickzpicture (dodatkowy punkt)
     Usuwanie ciągu elementów podanych przez użytkownika:
         usuwanie liści
         usuwanie elementu z jednym potomkiem
         usuwanie elemntu z dwoma potomkami
     Usunięcie całego drzewa po jednym elemencie metodą post-order
     Równoważenie drzewa metodą DSW (Day-Stout-Warren)
+  + Export drzewa do tickzpicture (dodatkowy punkt)
 
 4. Benchmark (co trzeba zmierzyć, nie ma gotowego benchmarka, kilka razy i uśrednić wynik):
     tworzenie drzewa AVL metodą połowienia binarnego
