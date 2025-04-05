@@ -1,0 +1,28 @@
+import sys
+from commands.brain import commandcenter
+
+
+
+def main():
+    # Command-line arguments: python main.py --tree <tree type(AVL/BST)>
+    # Write "python3 main.py -t <AVL/BST>" to run the program, just a reminder for me
+    if len(sys.argv) != 3 or (sys.argv[1] != "--tree" and sys.argv[1] != "-t"):
+        print("Usage: python script.py --tree/-t <tree type (AVL/BST)>")
+        sys.exit(1)
+    
+    tree_type = sys.argv[2]
+
+    #create_tree(tree_type)
+
+    while(True):
+        print("action> ", end="")
+        command = input().lower()
+
+        if command == "exit":
+            print("Exiting...")
+            break
+        else:
+            commandcenter(command)
+
+if __name__ == "__main__":
+    main()

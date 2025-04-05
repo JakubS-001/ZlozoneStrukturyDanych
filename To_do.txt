@@ -2,7 +2,8 @@ PDF do zadania w Latex na Overleaf: https://www.overleaf.com/project/660dae9216d
 
 1. Menu:
     input danych (manual, heredoc, przekierowanie z pliku)
-    komendy (komendy z Operacje + Help, Exit)
+    komendy (komendy z Operacje)
+        dodawać komendy do Help
 
 2. Konstrukcja z ciągu liczb:
     drzewo AVL metodą połowienia binarnego
