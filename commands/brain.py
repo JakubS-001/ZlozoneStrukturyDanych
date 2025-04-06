@@ -9,7 +9,7 @@ def commandcenter(command, *args):
         "inorder" : [in_order_traversal, "Print the tree in order"],
         "postorder" : [post_order_traversal, "Print the tree post order"],
         "preorder" : [pre_order_traversal, "Print the tree pre order"],
-        "findminmax" : [find_min_max, "Print the minimun and maximum tree value"]
+        "findminmax" : [find_min_max, "Print the minimum and maximum tree value"]
         # Add more commands here
     }
     
