@@ -12,7 +12,8 @@ def main():
     
     tree_type = sys.argv[2]
 
-    create_tree(tree_type)
+    # W tym root masz całe drzewo, mam zdefiniowanego print(root), ale nie takiego jak w specyfikacjach zadania, tylko zwykłego
+    root = create_tree(tree_type)
 
     while(True):
         print("action> ", end="")
