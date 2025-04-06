@@ -17,11 +17,11 @@ PDF do zadania w Latex na Overleaf: https://www.overleaf.com/project/660dae9216d
 
 2. Konstrukcja z ciągu liczb:
 ?   drzewo AVL metodą połowienia binarnego
-?   drzewo BST
+/   drzewo BST
 
 3. Operacje:
     Wyszukanie najmniejszej i największej wartości
-    Wypisanie drzewa w kolejności in-order, pre-order, post-order
+  - Wypisanie drzewa w kolejności in-order, pre-order, post-order
     Usuwanie ciągu elementów podanych przez użytkownika:
         usuwanie liści
         usuwanie elementu z jednym potomkiem

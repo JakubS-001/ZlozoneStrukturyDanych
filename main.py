@@ -1,6 +1,6 @@
 import sys
 from commands.brain import commandcenter
-
+from commands.tree_creation import create_tree
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
     
     tree_type = sys.argv[2]
 
-    #create_tree(tree_type)
+    create_tree(tree_type)
 
     while(True):
         print("action> ", end="")
