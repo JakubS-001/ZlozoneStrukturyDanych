@@ -9,6 +9,7 @@ def commandcenter(command, *args):
         "inorder" : [in_order_traversal, "Print the tree in order"],
         "postorder" : [post_order_traversal, "Print the tree post order"],
         "preorder" : [pre_order_traversal, "Print the tree pre order"],
+        "findminmax" : [find_min_max, "Print the minimun and maximum tree value"]
         # Add more commands here
     }
     
@@ -41,7 +42,23 @@ def print_tree(node, indent="", last=True, *args):
         children = [c for c in (node.right, node.left) if c]
         for i, child in enumerate(children):
             print_tree(child, indent, i == len(children) - 1)
+            
 
+def find_min(node):
+    current_node = node
+    while current_node.left:
+        current_node = current_node.left
+    return current_node.value
+
+def find_max(node):
+    current_node = node
+    while current_node.right:
+        current_node = current_node.right
+    return current_node.value
+
+def find_min_max(node):
+    print(f"Min: {find_min(node)}")
+    print(f"Max: {find_max(node)}")
 
 def in_order_traversal(node, *args):
     if node:
