@@ -23,7 +23,7 @@ def main():
             print("Exiting...")
             break
         else:
-            commandcenter(command)
+            commandcenter(command, root)
 
 if __name__ == "__main__":
     main()

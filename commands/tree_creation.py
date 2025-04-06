@@ -20,10 +20,30 @@ def create_tree(tree_type):
     global nodes_values
 
     print(f"Creating a {tree_type} tree...")
-    print("nodes> ", end="")
-    nodes_number = int(input())
-    print("insert> ", end="")
-    nodes_values = list(map(int, input().split(',')))
+
+    while True:
+        try:
+            print("nodes> ", end="")
+            nodes_number = int(input()) 
+            if nodes_number <= 0:
+                print("The number of nodes must be a positive integer.")
+                continue
+            break
+        except ValueError:
+            print("Please enter a valid integer for the number of nodes.")
+
+    while True:
+        try:
+            print("insert> ", end="")
+            nodes_values = list(map(int, input().split()))
+            if len(nodes_values) != nodes_number:
+                print(f"Please enter exactly {nodes_number} node values.")
+                continue
+            break
+        except ValueError:
+            print("Invalid input. Please enter only integers for node values.")
+
+
     print("Data inserted successfully.")
 
     for node_value in nodes_values: # Checking if the values are integers, just to be sure
@@ -48,7 +68,7 @@ def create_tree(tree_type):
         mid = len(nodes_values) // 2
         root.left = temp(nodes_values[:mid])
         root.right = temp(nodes_values[mid + 1:])
-        print("AVL tree created successfully??????? Gotta check with print\n")
+        print("BST created successfully.\n")
         
 
     def create_bst_tree():
