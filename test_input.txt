@@ -5,4 +5,13 @@ help
 qwerty
 print all
 findminmax
+print tree
+delete
+1
+6
+print tree
+delete
+1
+2
+print tree
 exit

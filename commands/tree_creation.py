@@ -65,9 +65,19 @@ def create_tree(tree_type):
             node.left = temp(node_values_avl[:mid])
             node.right = temp(node_values_avl[mid + 1:])
             return node
+        def parenting(node):
+            if node.left:
+                node.left.parent=node
+                parenting(node.left)
+            if node.right:
+                node.right.parent=node
+                parenting(node.right)
+            
+
         mid = len(nodes_values) // 2
         root.left = temp(nodes_values[:mid])
         root.right = temp(nodes_values[mid + 1:])
+        parenting(root)
         print("BST created successfully.\n")
         
 
@@ -83,14 +93,14 @@ def create_tree(tree_type):
             while True:
                 if node_value < current_node.value:
                     if current_node.left is None:
-                        current_node.add_child(new_node, 'left')
+                        current_node.left = new_node
                         new_node.parent = current_node
                         break
                     else:
                         current_node = current_node.left
                 elif node_value > current_node.value:
                     if current_node.right is None:
-                        current_node.add_child(new_node, 'right')
+                        current_node.right = new_node
                         new_node.parent = current_node
                         break
                     else:
