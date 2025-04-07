@@ -11,13 +11,13 @@ def main():
         sys.exit(1)
     
     tree_type = sys.argv[2]
-
     # W tym root masz całe drzewo, mam zdefiniowanego print(root), ale nie takiego jak w specyfikacjach zadania, tylko zwykłego
     root = create_tree(tree_type)
-
+    
     while(True):
-        print("action> ", end="")
+        print("\naction> ", end="")
         command = input().lower()
+        if not sys.stdin.isatty(): print(command) #newline if input not from terminal
 
         if command == "exit":
             print("Exiting...")

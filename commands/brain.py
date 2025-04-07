@@ -1,49 +1,41 @@
 #decision making to activate different commands
+from commands.printing import *
 
 def commandcenter(command, *args):
-
+    global known_commands
     known_commands = { # all commands are lowercase
         "help": [info_dump, "Show available commands"],
         "exit": [exit_program, "Exit the program"],
-        "print": [print_tree, "Print the tree structure"],
-        "inorder" : [in_order_traversal, "Print the tree in order"],
-        "postorder" : [post_order_traversal, "Print the tree post order"],
-        "preorder" : [pre_order_traversal, "Print the tree pre order"],
+        "print": [print_brain, "Print the tree based on given arguments:\n\tall - prints the elements in tree in in-order, post-order and pre-order\n\ttree - prints tree structure\n\t....-order - prints the elements in tree in the respective order (look argument all)"],
         "findminmax" : [find_min_max, "Print the minimum and maximum tree value"]
         # Add more commands here
     }
     
     if command in known_commands:
         if command == "help":
-            known_commands[command][0](known_commands, *args)
+            known_commands[command][0](*args)
+        elif command[0:5]=="print":
+            return
         else:
             known_commands[command][0](*args)
+    elif command[0:5]=="print":
+        print_brain(command[6:], *args)
     else:
         print("Unknown command. Type 'help' for a list of available commands.")
 
 
-def info_dump(known_commands, *args):
+def info_dump(*args):
     print("\nAvailable commands:")
     
     for command, (function, description) in known_commands.items():
         print(f"{command} - {description}")  # Print the command and its description
     
-    print("\nAll commands are case-insensitive. For example, 'help' and 'Help' are the same command.\n")
+    print("\nAll commands are case-insensitive. For example, 'help' and 'Help' are the same command.")
     # Some more miscellaneous information for the user
-
 
 def exit_program(*args):
     pass
-
-def print_tree(node, indent="", last=True, *args):
-    if node:
-        print(indent + ("└── " if last else "├── ") + str(node.value))
-        indent += "    " if last else "│   "
-        children = [c for c in (node.right, node.left) if c]
-        for i, child in enumerate(children):
-            print_tree(child, indent, i == len(children) - 1)
             
-
 def find_min(node):
     current_node = node
     while current_node.left:
@@ -60,20 +52,3 @@ def find_min_max(node):
     print(f"Min: {find_min(node)}")
     print(f"Max: {find_max(node)}")
 
-def in_order_traversal(node, *args):
-    if node:
-        in_order_traversal(node.left)
-        print(node.value)
-        in_order_traversal(node.right)
-
-def pre_order_traversal(node, *args):
-    if node:
-        print(node.value)
-        pre_order_traversal(node.left)
-        pre_order_traversal(node.right)
-
-def post_order_traversal(node, *args):
-    if node:
-        post_order_traversal(node.left)
-        post_order_traversal(node.right)
-        print(node.value)
