@@ -1,18 +1,4 @@
-def find(root, target):#Tried to put it in brain, didn't work
-    current_node=root
-    while True:
-        if current_node.value==target:
-            return current_node
-        if target > current_node.value:
-            if current_node.right: current_node=current_node.right
-            else:
-                print(f"Couldn't find node {target}")
-                return 0
-        if target < current_node.value:
-            if current_node.left: current_node=current_node.left
-            else:
-                print(f"Couldn't find node {target}")
-                return 0
+from commands.searching import find, find_max
 
 def single_murder(root, sacrifice):
     parent = sacrifice.parent
@@ -38,8 +24,13 @@ def single_murder(root, sacrifice):
         elif parent.right == sacrifice: parent.right=kids[0]
         return root
     
+    #Taking the left in in-order as a substitute
+    substitute = find_max(sacrifice.left)
+    substitute_value = substitute.value
+    single_murder(root, substitute)
+    sacrifice.value = substitute_value
+    return root
     
-
 
 def mass_murder(root):
 
@@ -73,7 +64,7 @@ def mass_murder(root):
 
     for victim_value in victims:
         sacrifice=find(root, victim_value)
-        
+        if sacrifice==0: return root
         root = single_murder(root, sacrifice)
         
 

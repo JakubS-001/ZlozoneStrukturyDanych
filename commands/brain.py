@@ -1,6 +1,7 @@
 #decision making to activate different commands
 from commands.printing import *
 from commands.child_genocide import mass_murder
+from commands.searching import find_min_max
 
 def commandcenter(command, *args):
     global known_commands
@@ -37,22 +38,3 @@ def info_dump(*args):
 
 def exit_program(*args):
     pass
-            
-
-
-def find_min(node):
-    current_node = node
-    while current_node.left:
-        current_node = current_node.left
-    return current_node
-
-def find_max(node):
-    current_node = node
-    while current_node.right:
-        current_node = current_node.right
-    return current_node
-
-def find_min_max(node):
-    print(f"Min: {find_min(node).value}")
-    print(f"Max: {find_max(node).value}")
-

@@ -8,10 +8,10 @@ findminmax
 print tree
 delete
 1
-6
+9
 print tree
 delete
 1
-2
+9
 print tree
 exit
