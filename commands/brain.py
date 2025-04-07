@@ -1,6 +1,6 @@
 #decision making to activate different commands
 from commands.printing import *
-from commands.child_genocide import mass_murder
+from commands.child_genocide import mass_murder,kill_all
 from commands.searching import find_min_max
 
 def commandcenter(command, *args):
@@ -10,7 +10,9 @@ def commandcenter(command, *args):
         "exit": [exit_program, "Exit the program"],
         "print": [print_brain, "Print the tree based on given arguments:\n\tall - prints the elements in tree in in-order, post-order and pre-order\n\ttree - prints tree structure\n\t....-order - prints the elements in tree in the respective order (look argument all)"],
         "findminmax" : [find_min_max, "Print the minimum and maximum tree value"],
-        "delete": [mass_murder, "Delete given amount of nodes from the tree"]
+        "delete": [mass_murder, "Delete given amount of nodes from the tree"],
+        "delete all": [kill_all, "Delete all nodes from the tree in post-order"],
+        "create tree": [ "create_tree", "Create a new tree from beggining"]
         # Add more commands here
     }
     

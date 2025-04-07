@@ -31,7 +31,6 @@ def single_murder(root, sacrifice):
     sacrifice.value = substitute_value
     return root
     
-
 def mass_murder(root):
 
     while True:
@@ -69,3 +68,9 @@ def mass_murder(root):
         
 
     return root
+
+def kill_all(root, current_node):
+    if current_node:
+        kill_all(root, current_node.left)
+        kill_all(root, current_node.right)
+        root = single_murder(root, current_node)
