@@ -1,7 +1,7 @@
 import sys
 from commands.brain import commandcenter
 from commands.tree_creation import create_tree
-from commands.child_genocide import mass_murder, kill_all
+from commands.child_genocide import mass_removal, remove_all
 
 def main():
     # Command-line arguments: python main.py --tree <tree type(AVL/BST)>
@@ -23,9 +23,9 @@ def main():
             print("Exiting...")
             break
         elif command=="delete":
-            root=mass_murder(root)
+            root=mass_removal(root)
         elif command=="delete all":
-            root=kill_all(root, root)
+            root=remove_all(root, root)
         elif command=="create tree":
             print("\nTree type> ", end='')
             tree_type=input()
