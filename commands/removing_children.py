@@ -47,15 +47,15 @@ def mass_removal(root):
     while True:
         try:
             print("delete> ", end="")
-            victims = list(map(int, input().split()))
-            if len(victims) != target_number:
+            targets = list(map(int, input().split()))
+            if len(targets) != target_number:
                 print(f"Please enter exactly {target_number} node values.")
                 continue
             break
         except ValueError:
             print("Invalid input. Please enter only integers for node values.")
     
-    for node_value in victims: # Checking if the values are integers, just to be sure
+    for node_value in targets: # Checking if the values are integers, just to be sure
         if not isinstance(node_value, int):
             print(f"Invalid node value: {node_value}. Please enter integers only.")
             return
@@ -64,9 +64,8 @@ def mass_removal(root):
     for target_value in targets:
         target=find(root, target_value)
         if target==0: return root
-        root = single_murder(root, target)
+        root = remove_single(root, target)
         
-
     return root
 
 def remove_all(root, current_node):

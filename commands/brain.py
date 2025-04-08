@@ -1,22 +1,28 @@
 #decision making to activate different commands
 from commands.printing import *
-from commands.removing_children import mass_removal,remove_all
+from commands.removing_children import mass_removal, remove_all
 from commands.searching import find_min_max
+from commands.dsw import *
 
 def commandcenter(command, *args):
     global known_commands
     known_commands = { # all commands are lowercase
         "help": [info_dump, "Show available commands"],
-        "exit": [exit_program, "Exit the program"],
+        "exit": [None, "Exit the program"],
         "print": [print_brain, "Print the tree based on given arguments:\n\tall - prints the elements in tree in in-order, post-order and pre-order\n\ttree - prints tree structure\n\t....-order - prints the elements in tree in the respective order (look argument all)"],
         "findminmax" : [find_min_max, "Print the minimum and maximum tree value"],
         "delete": [mass_removal, "Delete given amount of nodes from the tree"],
         "delete all": [remove_all, "Delete all nodes from the tree in post-order"],
-        "create tree": [ "create_tree", "Create a new tree from beggining"]
+        "create tree": [None, "Create a new tree from beggining"],
+        "dsw": [None, "Balance tree using DSW"]
         # Add more commands here
     }
     
     if command in known_commands:
+
+        if known_commands[command][0] == None:
+            return
+
         if command == "help":
             known_commands[command][0](*args)
         elif command[0:5]=="print":
@@ -37,6 +43,3 @@ def info_dump(*args):
     
     print("\nAll commands are case-insensitive. For example, 'help' and 'Help' are the same command.")
     # Some more miscellaneous information for the user
-
-def exit_program(*args):
-    pass

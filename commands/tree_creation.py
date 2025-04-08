@@ -16,32 +16,63 @@ class Tree_node:
     def __str__(self):
         return f"Tree(value={self.value}, left={self.left}, right={self.right})"
 
-def create_tree(tree_type):
+def create_tree(tree_type, **kwargs):
     global nodes_values
 
-    print(f"Creating a {tree_type} tree...")
+    data = kwargs.get('data', None)
 
+    print(f"Creating a {tree_type} tree...")
+    nodes_values = None
     while True:
         try:
             print("nodes> ", end="")
-            nodes_number = int(input()) 
-            if nodes_number <= 0:
-                print("The number of nodes must be a positive integer.")
-                continue
+            print(data)
+            if data:
+                nodes_number = len(data)
+                nodes_values = data
+            else:
+
+                input_nodes = list(map(int, input().replace(',', ' ').split()))
+
+                nodes_number = input_nodes[0]
+
+                if len(input_nodes) > 1:
+                    nodes_values = input_nodes[1:]
+
+                
+                if nodes_number <= 0:
+                    print("The number of nodes must be a positive integer.")
+                    continue
             break
         except ValueError:
             print("Please enter a valid integer for the number of nodes.")
+        except KeyboardInterrupt:
+            print("\nCancelling...")
+            return None
+        except EOFError:
+            print("\nExiting...")
+            return None
 
     while True:
+        if nodes_values:
+            break
+
         try:
             print("insert> ", end="")
-            nodes_values = list(map(int, input().split()))
+            nodes_values = list(map(int, input().replace(',', ' ').split()))
+
             if len(nodes_values) != nodes_number:
                 print(f"Please enter exactly {nodes_number} node values.")
                 continue
             break
         except ValueError:
             print("Invalid input. Please enter only integers for node values.")
+        except KeyboardInterrupt:
+            print("\nCancelling...")
+            return None
+        except EOFError:
+            print("\nExiting...")
+            return None
 
 
     print("Data inserted successfully.")
@@ -78,7 +109,7 @@ def create_tree(tree_type):
         root.left = temp(nodes_values[:mid])
         root.right = temp(nodes_values[mid + 1:])
         parenting(root)
-        print("BST created successfully.\n")
+        print("AVL created successfully.")
         
 
     def create_bst_tree():
@@ -109,13 +140,13 @@ def create_tree(tree_type):
                     print(f"Duplicate value found: {node_value}. Please enter unique values.")
                     return
             
-        print("BST created successfully.\n")
-    
+        print("BST created successfully.")
+        #print(root)
     if tree_type.lower() == "avl":
         create_avl_tree()
     elif tree_type.lower() == "bst":
         create_bst_tree()
     else:
         print(f"Invalid tree type: {tree_type}. Please enter 'AVL' or 'BST'.")
-        return
+        return None
     return root

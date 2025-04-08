@@ -1,5 +1,5 @@
 def print_brain(func, node):
-
+    #print(func, node)
     def print_tree(node, indent="", last=True, *args):
         if node:
             print(indent + ("└── " if last else "├── ") + str(node.value))
