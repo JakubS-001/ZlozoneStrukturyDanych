@@ -16,7 +16,7 @@ class Tree_node:
     def __str__(self):
         return f"Tree(value={self.value}, left={self.left}, right={self.right})"
 
-def create_tree_from_terminal(*args, **kwargs):
+def create_tree_from_terminal():
     while True:
         print("Tree type> ", end="")
         tree_type=input().lower()
@@ -26,10 +26,8 @@ def create_tree_from_terminal(*args, **kwargs):
     return new_root
 
 
-def create_tree(tree_type, **kwargs):
+def create_tree(tree_type, data=None):
     global nodes_values
-
-    data = kwargs.get('data', None)
 
     print(f"Creating a {tree_type} tree...")
     nodes_values = None
@@ -72,6 +70,7 @@ def create_tree(tree_type, **kwargs):
 
             if len(nodes_values) != nodes_number:
                 print(f"Please enter exactly {nodes_number} node values.")
+                nodes_values = None
                 continue
             break
         except ValueError:

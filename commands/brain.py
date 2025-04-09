@@ -30,7 +30,7 @@ def commandcenter(command, root, *args):
         if function == None:
             return root
         elif contains_explicit_return(function):
-            root = function(root, *args)
+            root = function()
         else:
             function(root, *args)
     else:
@@ -40,7 +40,7 @@ def commandcenter(command, root, *args):
 def contains_explicit_return(f):
     return any(isinstance(node, ast.Return) for node in ast.walk(ast.parse(inspect.getsource(f))))
 
-def info_dump(root, *args):
+def info_dump(root, _):
     print("\nAvailable commands:")
     
     for command, (function, description) in known_commands.items():
