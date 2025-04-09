@@ -5,6 +5,7 @@ from commands.removing_children import mass_removal, initiate_remove_all
 from commands.searching import find_min_max
 from commands.dsw import *
 from commands.tree_creation import create_tree_from_terminal
+from commands.export_tik import export_print_tree_tikz
 
 def commandcenter(command, root, *args):
     global known_commands
@@ -16,7 +17,8 @@ def commandcenter(command, root, *args):
         "delete": [mass_removal, "Delete given amount of nodes from the tree"],
         "delete all": [initiate_remove_all, "Delete all nodes from the tree in post-order"],
         "create tree": [create_tree_from_terminal, "Create a new tree from beggining"],
-        "dsw": [dsw_balance, "Balance tree using DSW"]
+        "dsw": [dsw_balance, "Balance tree using DSW"],
+        "export": [export_print_tree_tikz, "Export tree to tickzpicture (Latex)"]
         # Add more commands here
     }
     
