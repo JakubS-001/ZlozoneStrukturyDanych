@@ -1,10 +1,16 @@
 def find_min(node):
+    if not node:
+        print("The given tree is empty. Can't find min node.\nAborting...")
+        return None
     current_node = node
     while current_node.left:
         current_node = current_node.left
     return current_node
 
 def find_max(node):
+    if not node:
+        print("The given tree is empty. Can't find max node.\nAborting...")
+        return None
     current_node = node
     while current_node.right:
         current_node = current_node.right

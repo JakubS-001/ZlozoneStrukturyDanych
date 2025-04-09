@@ -1,4 +1,8 @@
 def print_brain(func, node):
+    def print_tree_initiate(node):
+        if node: print_tree(node)
+        else: print("The tree is empty")
+    
     def print_tree(node, indent="", last=True):
         if node:
             direction = ""
@@ -39,6 +43,7 @@ def print_brain(func, node):
             print(node.value, end=" ")
 
     def print_all_order(node):
+        if not node: print("The tree is empty, but sure, why not?")
         print("In-order: ", end="")
         in_order_traversal(node)
         print("\nPost-order: ", end="")
@@ -48,7 +53,7 @@ def print_brain(func, node):
         print()
     
     commands = {
-        "tree" : print_tree,
+        "tree" : print_tree_initiate,
         "in-order": in_order_traversal,
         "pre-order": pre_order_traversal,
         "post-order": post_order_traversal,

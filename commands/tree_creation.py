@@ -22,6 +22,7 @@ def create_tree_from_terminal(root=None):
         tree_type=input().lower()
         if tree_type=="avl" or tree_type=="bst":
             break
+        else: print("The available tree types are AVL or BST")
     new_root = create_tree(tree_type)
     return new_root
 

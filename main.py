@@ -38,7 +38,8 @@ def main():
         try:
             print("\naction> ", end="")
             command = input().lower()
-
+            if not sys.stdin.isatty(): print(command)
+            
             if command == "exit":
                 print("Exiting...")
                 break
@@ -49,8 +50,9 @@ def main():
             print("\nExiting...")
             break
         except EOFError:
-            print("\nExiting...")
-            break
+            sys.stdin=open('/dev/tty')
+            print("\nEnding file input...")
+            #break
 
 
 if __name__ == "__main__":
