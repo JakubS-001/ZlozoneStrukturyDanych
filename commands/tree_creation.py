@@ -42,6 +42,9 @@ def create_tree(tree_type, data=None):
 
                 input_nodes = list(map(int, input().replace(',', ' ').split()))
 
+                if not input_nodes or len(input_nodes) < 1:
+                    return None
+
                 nodes_number = input_nodes[0]
 
                 if len(input_nodes) > 1:
