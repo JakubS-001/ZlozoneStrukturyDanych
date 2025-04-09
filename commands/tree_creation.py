@@ -16,7 +16,7 @@ class Tree_node:
     def __str__(self):
         return f"Tree(value={self.value}, left={self.left}, right={self.right})"
 
-def create_tree_from_terminal():
+def create_tree_from_terminal(root=None):
     while True:
         print("Tree type> ", end="")
         tree_type=input().lower()

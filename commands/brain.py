@@ -7,7 +7,7 @@ from commands.dsw import *
 from commands.tree_creation import create_tree_from_terminal
 from commands.export_tik import export_print_tree_tikz
 
-def commandcenter(command, root, *args):
+def commandcenter(command, root):
     global known_commands
     known_commands = { # all commands are lowercase
         "help": [info_dump, "Show available commands"],
@@ -24,13 +24,13 @@ def commandcenter(command, root, *args):
     
     
     if command[0:5]=="print":
-        print_brain(command[6:], root, *args)
+        print_brain(command[6:], root)
     elif command in known_commands:
         function = known_commands[command][0]
         if function == None:
             return root
         elif contains_explicit_return(function):
-            root = function()
+            root = function(root)
         else:
             function(root, *args)
     else:
