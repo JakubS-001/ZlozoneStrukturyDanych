@@ -83,6 +83,7 @@ def balance_vine(pseudo_root, size):
 
 def dsw_balance(root):
     if not root: 
+        print("The tree is empty")
         return None
 
     pseudo_root = create_vine(root)
@@ -90,4 +91,5 @@ def dsw_balance(root):
     balance_vine(pseudo_root, size)
     new_root = pseudo_root.right
     new_root.parent = None
+    print("Tree balanced sucessfully.")
     return new_root

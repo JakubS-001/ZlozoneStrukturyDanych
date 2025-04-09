@@ -43,7 +43,9 @@ def print_brain(func, node):
             print(node.value, end=" ")
 
     def print_all_order(node):
-        if not node: print("The tree is empty, but sure, why not?")
+        if not node:
+            print("The tree is empty")
+            return
         print("In-order: ", end="")
         in_order_traversal(node)
         print("\nPost-order: ", end="")

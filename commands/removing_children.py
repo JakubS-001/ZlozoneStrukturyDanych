@@ -76,6 +76,7 @@ def mass_removal(root):
 
 def initiate_remove_all(root):
     root = remove_all(root, root)
+    print("Tree removed successfully.")
     return root
 
 def remove_all(root, current_node):
