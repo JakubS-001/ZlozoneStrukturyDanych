@@ -16,6 +16,16 @@ class Tree_node:
     def __str__(self):
         return f"Tree(value={self.value}, left={self.left}, right={self.right})"
 
+def create_tree_from_terminal(*args, **kwargs):
+    while True:
+        print("Tree type> ", end="")
+        tree_type=input().lower()
+        if tree_type=="avl" or tree_type=="bst":
+            break
+    new_root = create_tree(tree_type)
+    return new_root
+
+
 def create_tree(tree_type, **kwargs):
     global nodes_values
 
@@ -26,7 +36,6 @@ def create_tree(tree_type, **kwargs):
     while True:
         try:
             print("nodes> ", end="")
-            print(data)
             if data:
                 nodes_number = len(data)
                 nodes_values = data

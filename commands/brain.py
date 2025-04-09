@@ -4,6 +4,7 @@ from commands.printing import *
 from commands.removing_children import mass_removal, initiate_remove_all
 from commands.searching import find_min_max
 from commands.dsw import *
+from commands.tree_creation import create_tree_from_terminal
 
 def commandcenter(command, root, *args):
     global known_commands
@@ -14,7 +15,7 @@ def commandcenter(command, root, *args):
         "findminmax" : [find_min_max, "Print the minimum and maximum tree value"],
         "delete": [mass_removal, "Delete given amount of nodes from the tree"],
         "delete all": [initiate_remove_all, "Delete all nodes from the tree in post-order"],
-        "create tree": [None, "Create a new tree from beggining"],
+        "create tree": [create_tree_from_terminal, "Create a new tree from beggining"],
         "dsw": [dsw_balance, "Balance tree using DSW"]
         # Add more commands here
     }
