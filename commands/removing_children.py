@@ -1,3 +1,4 @@
+import sys
 from commands.searching import find, find_max
 
 def remove_single(root, target):
@@ -37,6 +38,8 @@ def mass_removal(root):
         try:
             print("nodes> ", end="")
             target_number = int(input()) 
+            if not sys.stdin.isatty():
+                print(target_number)
             if target_number <= 0:
                 print("The number of nodes must be a positive integer.")
                 continue
@@ -47,7 +50,10 @@ def mass_removal(root):
     while True:
         try:
             print("delete> ", end="")
-            targets = list(map(int, input().split()))
+            targets_str = input().split()
+            targets = list(map(int, targets_str))
+            if not sys.stdin.isatty():
+                print(" ".join(targets_str))
             if len(targets) != target_number:
                 print(f"Please enter exactly {target_number} node values.")
                 continue

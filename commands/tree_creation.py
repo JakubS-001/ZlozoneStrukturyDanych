@@ -1,3 +1,4 @@
+import sys
 class Tree_node:
     def __init__(self, value=None, parent=None):
         self.parent = None
@@ -39,22 +40,27 @@ def create_tree(tree_type, data=None):
                 nodes_number = len(data)
                 nodes_values = data
             else:
-
-                input_nodes = list(map(int, input().replace(',', ' ').split()))
+                input_nodes_str = input().replace(',', ' ').split()
+                input_nodes = list(map(int, input_nodes_str))
 
                 if not input_nodes or len(input_nodes) < 1:
                     return None
 
-                nodes_number = input_nodes[0]
+                if not sys.stdin.isatty():
+                        nodes_number = len(input_nodes)
+                        nodes_values = input_nodes
+                        print(nodes_number)
+                        print("insert>", " ".join(input_nodes_str))
 
-                if len(input_nodes) > 1:
-                    nodes_number = len(input_nodes)
-                    nodes_values = input_nodes
+                else:
+                    nodes_number = input_nodes[0]
+
+                    if nodes_number <= 0:
+                        print("The number of nodes must be a positive integer.")
+                        continue
 
                 
-                if nodes_number <= 0:
-                    print("The number of nodes must be a positive integer.")
-                    continue
+                
             break
         except ValueError:
             print("Please enter a valid integer for the number of nodes.")
@@ -86,14 +92,25 @@ def create_tree(tree_type, data=None):
         except EOFError:
             print("\nExiting...")
             return None
+    
+    set_nodes = set(nodes_values)
 
-
-    print("Data inserted successfully.")
+    new_values = []
 
     for node_value in nodes_values: # Checking if the values are integers, just to be sure
         if not isinstance(node_value, int):
             print(f"Invalid node value: {node_value}. Please enter integers only.")
             return None
+        if not node_value in new_values:
+            new_values.append(node_value)
+
+    if len(new_values) != nodes_number:
+        print("Duplicated values were removed.")  
+    
+    nodes_values = new_values
+    nodes_number = len(new_values)
+    print("Data inserted successfully.")
+
 
     def create_avl_tree():
         global root
