@@ -14,7 +14,7 @@ def find_min_max(node):
     print(f"Min: {find_min(node).value}")
     print(f"Max: {find_max(node).value}")
 
-def find(root, target):#Tried to put it in brain, didn't work
+def find(root, target):
     current_node=root
     while True:
         if current_node.value==target:

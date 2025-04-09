@@ -80,7 +80,7 @@ def create_tree(tree_type, **kwargs):
     for node_value in nodes_values: # Checking if the values are integers, just to be sure
         if not isinstance(node_value, int):
             print(f"Invalid node value: {node_value}. Please enter integers only.")
-            return
+            return None
 
     def create_avl_tree():
         global root
@@ -138,7 +138,7 @@ def create_tree(tree_type, **kwargs):
                         current_node = current_node.right
                 else:
                     print(f"Duplicate value found: {node_value}. Please enter unique values.")
-                    return
+                    return None
             
         print("BST created successfully.")
         #print(root)

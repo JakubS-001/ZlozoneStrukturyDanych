@@ -16,4 +16,3 @@ delete
 print tree
 delete all
 print tree
-exit

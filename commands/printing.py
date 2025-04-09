@@ -1,4 +1,4 @@
-def print_brain(func, node):
+def print_brain(func, node, *args):
     #print(func, node)
     def print_tree(node, indent="", last=True, *args):
         if node:
@@ -26,7 +26,7 @@ def print_brain(func, node):
             post_order_traversal(node.right)
             print(node.value, end=" ")
 
-    def print_all_order(node):
+    def print_all_order(node, *args):
         print("In-order: ", end="")
         in_order_traversal(node)
         print("\nPost-order: ", end="")

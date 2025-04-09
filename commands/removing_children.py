@@ -68,6 +68,10 @@ def mass_removal(root):
         
     return root
 
+def initiate_remove_all(root):
+    root = remove_all(root, root)
+    return root
+
 def remove_all(root, current_node):
     if current_node:
         remove_all(root, current_node.left)

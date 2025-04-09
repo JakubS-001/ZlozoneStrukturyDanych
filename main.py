@@ -42,21 +42,8 @@ def main():
             if command == "exit":
                 print("Exiting...")
                 break
-            elif command == "delete":
-                root = mass_removal(root)
-            elif command == "delete all":
-                root = remove_all(root, root)
-            elif command == "create tree":
-                print("\nTree type> ", end="")
-                tree_type = input()
-                if tree_type.lower() not in allowed_types:
-                    print("Wrong tree type specified")
-                    continue
-                root = create_tree(tree_type)
-            elif command == "dsw":
-                root = dsw_balance(root)
             else:
-                commandcenter(command, root)
+                root = commandcenter(command, root)
 
         except KeyboardInterrupt:
             print("\nExiting...")
