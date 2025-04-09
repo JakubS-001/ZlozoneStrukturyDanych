@@ -45,7 +45,8 @@ def create_tree(tree_type, data=None):
                 nodes_number = input_nodes[0]
 
                 if len(input_nodes) > 1:
-                    nodes_values = input_nodes[1:]
+                    nodes_number = len(input_nodes)
+                    nodes_values = input_nodes
 
                 
                 if nodes_number <= 0:
