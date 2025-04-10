@@ -24,7 +24,8 @@ def commandcenter(command, root):
     
     
     if command[0:5]=="print":
-        print_brain(command[6:], root)
+        if command[6:]: print_brain(command[6:], root)
+        else: print_brain("all", root)
     elif command in known_commands:
         function = known_commands[command][0]
         if function == None:
