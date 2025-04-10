@@ -23,7 +23,7 @@ def commandcenter(command, root):
         "remove": [mass_removal, "Works the same as Delete"],
         "remove all": [initiate_remove_all, "Works the same as Delete all"],
         "create tree": [create_tree_from_terminal, "Create a new tree from beggining"],
-        "dsw": [dsw_balance, "Balance tree using DSW"],
+        "rebalance": [dsw_balance, "Balance tree using DSW"],
         "export": [export_print_tree_tikz, "Export tree to tickzpicture (Latex)"]
         # Add more commands here
     }

@@ -1,4 +1,4 @@
-import sys
+import sys, os, stat
 class Tree_node:
     def __init__(self, value=None, parent=None):
         self.parent = None
@@ -46,7 +46,7 @@ def create_tree(tree_type, data=None):
                 if not input_nodes or len(input_nodes) < 1:
                     return None
 
-                if not sys.stdin.isatty():
+                if stat.S_ISFIFO(os.fstat(0).st_mode):
                         nodes_number = len(input_nodes)
                         nodes_values = input_nodes
                         print(nodes_number)
