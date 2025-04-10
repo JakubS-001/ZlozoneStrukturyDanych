@@ -54,4 +54,4 @@ def info_dump(root):
         print(f"{command} - {description}")  # Print the command and its description
     
     print("\nAll commands are case-insensitive. For example, 'help' and 'Help' are the same command.")
-    # Some more miscellaneous information for the user
+    print("Commands Delete all and Remove all also work without space between them, but only those two")
