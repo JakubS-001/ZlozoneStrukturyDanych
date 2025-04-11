@@ -1,4 +1,4 @@
-import sys, os, stat
+import os, stat
 class Tree_node:
     def __init__(self, value=None, parent=None):
         self.parent = None

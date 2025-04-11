@@ -2,8 +2,6 @@ import sys
 import argparse
 from commands.brain import commandcenter
 from commands.tree_creation import create_tree
-from commands.removing_children import mass_removal, remove_all
-from commands.dsw import dsw_balance
 
 def main():
 
