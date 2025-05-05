@@ -29,7 +29,7 @@ def print_brain(func, node):
     def in_order_traversal(node):
         if node:
             in_order_traversal(node.left)
-            #print(node.value, end=" ")
+            print(node.value, end=" ")
             in_order_traversal(node.right)
 
     def pre_order_traversal(node):
