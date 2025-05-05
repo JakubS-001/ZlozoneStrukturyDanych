@@ -7,7 +7,7 @@ from itertools import islice
 from commands.brain import commandcenter
 from commands.tree_creation import create_tree
 from commands.printing import print_brain
-from commands.searching import find_min_max
+from commands.searching import find_min, find_max
 from commands.dsw import dsw_balance
 
 import time
@@ -63,13 +63,14 @@ def process_batch(batch, amount):
     czasy[amount]["avl"]["tree_creation"].append(delay)
 
     start = time.perf_counter()
-    find_min_max(root)
+    find_min(root)
+    find_max(root)
     delay = (time.perf_counter() - start) * 1000
     print(f"Min/max AVL {amount} danych: {delay} ms")
     czasy[amount]["avl"]["min_max"].append(delay)
 
     start = time.perf_counter()
-    print_brain("in-order", root)
+    print_brain("in-order_benchmark", root) #ignoring printing to console delay
     delay = (time.perf_counter() - start) * 1000
     print(f"In-order AVL {amount} danych: {delay} ms")
     czasy[amount]["avl"]["in_order"].append(delay)
@@ -81,13 +82,14 @@ def process_batch(batch, amount):
     czasy[amount]["bst"]["tree_creation"].append(delay)
 
     start = time.perf_counter()
-    find_min_max(root)
+    find_min(root)
+    find_max(root)
     delay = (time.perf_counter() - start) * 1000
     print(f"Min/max BST {amount} danych: {delay} ms")
     czasy[amount]["bst"]["min_max"].append(delay)
 
     start = time.perf_counter()
-    print_brain("in-order", root)
+    print_brain("in-order_benchmark", root)
     delay = (time.perf_counter() - start) * 1000
     print(f"In-order BST {amount} danych: {delay} ms")
     czasy[amount]["bst"]["in_order"].append(delay)

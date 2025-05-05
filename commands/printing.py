@@ -23,8 +23,10 @@ def print_brain(func, node):
             for i, child in enumerate(children):
                 print_tree(child, indent, i == len(children) - 1)
 
-
-
+    def in_order_benchmark(node):
+        if node:
+            in_order_benchmark(node.left)
+            in_order_benchmark(node.right)
 
     def in_order_traversal(node):
         if node:
@@ -57,11 +59,12 @@ def print_brain(func, node):
         print()
     
     commands = {
+        "in-order_benchmark": in_order_benchmark,
         "tree" : print_tree_initiate,
         "in-order": in_order_traversal,
         "pre-order": pre_order_traversal,
         "post-order": post_order_traversal,
-        "all":print_all_order
+        "all":print_all_order,
     }
     if func in commands:
         commands[func](node)
