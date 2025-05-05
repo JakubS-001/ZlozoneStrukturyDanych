@@ -1,4 +1,4 @@
-import os, stat
+import os, stat, time
 class Tree_node:
     def __init__(self, value=None, parent=None):
         self.parent = None
@@ -28,9 +28,9 @@ def create_tree_from_terminal(root=None):
     return new_root
 
 
-def create_tree(tree_type, data=None):
+def create_tree(tree_type, data=None, benchmark=False):
     global nodes_values
-
+    start = None
     print(f"Creating a {tree_type} tree...")
     nodes_values = None
     while True:
@@ -38,7 +38,7 @@ def create_tree(tree_type, data=None):
             print("nodes> ", end="")
             if data:
                 nodes_number = len(data)
-                nodes_values = data
+                nodes_values = list(data)
             else:
                 input_nodes_str = input().replace(',', ' ').split()
                 input_nodes = list(map(int, input_nodes_str))
@@ -58,9 +58,7 @@ def create_tree(tree_type, data=None):
                     if nodes_number <= 0:
                         print("The number of nodes must be a positive integer.")
                         continue
-
-                
-                
+         
             break
         except ValueError:
             print("Please enter a valid integer for the number of nodes.")
@@ -93,26 +91,26 @@ def create_tree(tree_type, data=None):
             print("\nExiting...")
             return None
     
-    set_nodes = set(nodes_values)
-
-    new_values = []
-
-    for node_value in nodes_values: # Checking if the values are integers, just to be sure
-        if not isinstance(node_value, int):
-            print(f"Invalid node value: {node_value}. Please enter integers only.")
-            return None
-        if not node_value in new_values:
-            new_values.append(node_value)
-
-    if len(new_values) != nodes_number:
-        print("Duplicated values were removed.")  
     
-    nodes_values = new_values
-    nodes_number = len(new_values)
-    print("Data inserted successfully.")
 
+    if benchmark == False:
+        new_values = []
+        for node_value in nodes_values: # Checking if the values are integers, just to be sure
+            if not isinstance(node_value, int):
+                print(f"Invalid node value: {node_value}. Please enter integers only.")
+                return None
+            if not node_value in new_values:
+                new_values.append(node_value)
+
+        if len(new_values) != nodes_number:
+            print("Duplicated values were removed.")  
+        
+        nodes_values = new_values
+        nodes_number = len(new_values)
+        print("Data inserted successfully.")
 
     def create_avl_tree():
+        start = time.perf_counter()
         global root
         nodes_values.sort()
         root = Tree_node(nodes_values[len(nodes_values) // 2])
@@ -140,9 +138,10 @@ def create_tree(tree_type, data=None):
         root.right = temp(nodes_values[mid + 1:])
         parenting(root)
         print("AVL created successfully.")
-        
+        return start
 
     def create_bst_tree():
+        start = time.perf_counter()
         global root
         root = Tree_node(nodes_values[0])
 
@@ -169,14 +168,18 @@ def create_tree(tree_type, data=None):
                 else:
                     print(f"Duplicate value found: {node_value}. Please enter unique values.")
                     return None
+        return start
             
         print("BST created successfully.")
         #print(root)
     if tree_type.lower() == "avl":
-        create_avl_tree()
+        start = create_avl_tree()
     elif tree_type.lower() == "bst":
-        create_bst_tree()
+        start = create_bst_tree()
     else:
         print(f"Invalid tree type: {tree_type}. Please enter 'AVL' or 'BST'.")
-        return None
+        return 
+    if benchmark:
+        print(start)
+        return (root,start)
     return root

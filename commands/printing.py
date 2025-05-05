@@ -1,3 +1,5 @@
+import sys
+sys.setrecursionlimit(1_000_000)
 def print_brain(func, node):
     def print_tree_initiate(node):
         if node: print_tree(node)
@@ -27,7 +29,7 @@ def print_brain(func, node):
     def in_order_traversal(node):
         if node:
             in_order_traversal(node.left)
-            print(node.value, end=" ")
+            #print(node.value, end=" ")
             in_order_traversal(node.right)
 
     def pre_order_traversal(node):
